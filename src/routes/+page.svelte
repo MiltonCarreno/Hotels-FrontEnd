@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    export let data;
+</script>
+
+{#each data.reviews as {author, title}}
+    <p> Author: {author} --- Title: {title} </p>
+{/each}
