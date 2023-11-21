@@ -4,7 +4,7 @@
 </script>
 
 <form>
-  Search: <input type="text" autocomplete="off" name="term">
+  Search: <input type="text" autocomplete="off" name="keyword">
 </form>
 
 {#if hotels_data !== undefined}

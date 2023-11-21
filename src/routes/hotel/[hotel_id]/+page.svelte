@@ -2,7 +2,7 @@
     export let data;
     let hotel = data.hotel;
     let reviews = data.reviews;
-    let users = data.users;
+    let user_reviews = data.user_reviews;
 </script>
 
 <div>
@@ -12,19 +12,20 @@
 </div>
 
 <form method="POST" action="?/add">
-    Username: <input type="text" autocomplete="off" name="username">
-    Email: <input type="text" autocomplete="off" name="email">
-    <input type="hidden" name="hotel_id" value="{hotel.hotel_id}"/>
+    Title: <input type="text" autocomplete="off" name="title">
+    Text: <input type="text" autocomplete="off" name="text">
+    ID: <input type="text" autocomplete="off" name="user_id">
+    <input type="hidden" name="hotel_id" value={hotel.hotel_id}/>
     <input type="submit"/>
 </form>
 
 <ul>
-    {#each users as {username, email, id}}
+    {#each user_reviews as {title, text, review_id}}
         <li>
             <form method="POST" action="?/delete">
-                <input type="hidden" name="id" value="{id}" />
+                <input type="hidden" name="review_id" value="{review_id}" />
                 <input type="hidden" name="hotel_id" value="{hotel.hotel_id}"/>
-                <span>Name: {username} == Email: {email}</span>
+                <span>Name: {title} == Email: {text}</span>
                 <input type="submit"/>
             </form>
         </li>

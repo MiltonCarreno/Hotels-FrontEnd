@@ -1,13 +1,12 @@
 export const load = (async ({ fetch, url }) => {
-    const search_term = url.searchParams.get('term');
-    console.log("The term: " + search_term);
-    if (!search_term) {
-        console.log("in the if? " + !search_term)
+    const keyword = url.searchParams.get('keyword');
+    console.log("The term: " + keyword);
+    if (!keyword) {
+        console.log("in the if? " + !keyword)
         return null;
     }
 
-    const api_url = "http://0.0.0.0:8080/get_like_hotels/" 
-        + search_term;
+    const api_url = "http://0.0.0.0:8080/get_like_hotels/" + keyword;
     const res = await fetch(api_url).then((data) => data.json());
     console.log(res)
     return {res: res};
