@@ -19,8 +19,15 @@
 </form>
 
 <ul>
-    {#each users as {username, email}}
-        <li>Name: {username} == Email: {email}</li>
+    {#each users as {username, email, id}}
+        <li>
+            <form method="POST" action="?/delete">
+                <input type="hidden" name="id" value="{id}" />
+                <input type="hidden" name="hotel_id" value="{hotel.hotel_id}"/>
+                <span>Name: {username} == Email: {email}</span>
+                <input type="submit"/>
+            </form>
+        </li>
     {/each}
 </ul>
 

@@ -1,4 +1,5 @@
 import {redirect} from '@sveltejs/kit';
+import { unsubscribe } from 'diagnostics_channel';
 
 export async function load({ fetch, params }) {
     const hotel_url = "http://0.0.0.0:8080/get_hotel/" 
@@ -31,6 +32,15 @@ export const actions = {
                 'Content-Type': 'application/json'
             }
         });
+        throw redirect(303, "http://localhost:5173/hotel/" + hotel_id);
+    }, 
+    delete: async ({ request }) => {
+        const data = await request.formData();
+        const hotel_id = data.get('hotel_id');
+        const user_id = data.get('id');
+        const url = "http://0.0.0.0:8080/delete/" + user_id;
+
+        const res = await fetch(url);
         throw redirect(303, "http://localhost:5173/hotel/" + hotel_id);
     }
 }
