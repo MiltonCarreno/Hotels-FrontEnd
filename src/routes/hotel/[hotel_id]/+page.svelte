@@ -23,7 +23,7 @@
     {#each user_reviews as {title, text, review_id}}
         <li>
             <form method="POST" action="?/delete">
-                <input type="hidden" name="review_id" value="{review_id}" />
+                <input type="hidden" name="review_id" value="{review_id}"/>
                 <input type="hidden" name="hotel_id" value="{hotel.hotel_id}"/>
                 <span>Name: {title} == Email: {text}</span>
                 <input type="submit"/>
