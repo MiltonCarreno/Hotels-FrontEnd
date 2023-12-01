@@ -1,16 +1,15 @@
 import {redirect} from '@sveltejs/kit';
 
 export async function load({ fetch, params }) {
-    const hotel_url = "http://0.0.0.0:8080/get_hotel/" 
-        + params.hotel_id;
+    const hotel_url = "http://0.0.0.0:8080/get_hotel/" + params.hotel_id;
     const hotel_reviews_url = "http://0.0.0.0:8080/get_hotel_reviews/" 
         + params.hotel_id;
-    const user_reviews_url = "http://0.0.0.0:8080/get_all_user_reviews";
+    const user_reviews_url = 
+        "http://0.0.0.0:8080/get_user_reviews_by_hotel_id/"+params.hotel_id;
 
     const hotel = await fetch(hotel_url).then((data) => data.json());
     const reviews = await fetch(hotel_reviews_url).then((data) => data.json());
-    const user_reviews = await fetch(user_reviews_url)
-        .then((data) => data.json());
+    const user_reviews = await fetch(user_reviews_url).then((data) => data.json());
     console.log(hotel);
     console.log(reviews);
     console.log(user_reviews);
